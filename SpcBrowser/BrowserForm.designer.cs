@@ -35,7 +35,7 @@
 			this.propertyGrid = new System.Windows.Forms.PropertyGrid();
 			this.previewTab = new System.Windows.Forms.TabPage();
 			this.panel = new System.Windows.Forms.Panel();
-			this.pictureBox = new System.Windows.Forms.PictureBox();
+			this.playButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -43,7 +43,7 @@
 			this.tabControl.SuspendLayout();
 			this.propertiesTab.SuspendLayout();
 			this.previewTab.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+			this.panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -107,7 +107,6 @@
 			// previewTab
 			// 
 			this.previewTab.Controls.Add(this.panel);
-			this.previewTab.Controls.Add(this.pictureBox);
 			this.previewTab.Location = new System.Drawing.Point(4, 4);
 			this.previewTab.Name = "previewTab";
 			this.previewTab.Padding = new System.Windows.Forms.Padding(3);
@@ -118,21 +117,22 @@
 			// 
 			// panel
 			// 
+			this.panel.Controls.Add(this.playButton);
 			this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel.Location = new System.Drawing.Point(3, 3);
 			this.panel.Name = "panel";
 			this.panel.Size = new System.Drawing.Size(505, 529);
 			this.panel.TabIndex = 4;
 			// 
-			// pictureBox
+			// playButton
 			// 
-			this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox.Location = new System.Drawing.Point(3, 3);
-			this.pictureBox.Name = "pictureBox";
-			this.pictureBox.Size = new System.Drawing.Size(505, 529);
-			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox.TabIndex = 3;
-			this.pictureBox.TabStop = false;
+			this.playButton.Location = new System.Drawing.Point(218, 260);
+			this.playButton.Name = "playButton";
+			this.playButton.Size = new System.Drawing.Size(75, 23);
+			this.playButton.TabIndex = 0;
+			this.playButton.Text = "Play";
+			this.playButton.UseVisualStyleBackColor = true;
+			this.playButton.Click += new System.EventHandler(this.playButton_Click);
 			// 
 			// BrowserForm
 			// 
@@ -150,7 +150,7 @@
 			this.tabControl.ResumeLayout(false);
 			this.propertiesTab.ResumeLayout(false);
 			this.previewTab.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+			this.panel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -163,8 +163,8 @@
 		private System.Windows.Forms.TabPage propertiesTab;
 		private System.Windows.Forms.TabPage previewTab;
 		private System.Windows.Forms.PropertyGrid propertyGrid;
-		private System.Windows.Forms.PictureBox pictureBox;
 		private System.Windows.Forms.Panel panel;
+		private System.Windows.Forms.Button playButton;
 	}
 }
 
