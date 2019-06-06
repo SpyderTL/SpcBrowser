@@ -56,7 +56,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TreeNodes\DataNode.cs" />
     <Compile Include="TreeNodes\IReadable.cs" />
+    <Compile Include="TreeNodes\SpcCompressedAudioBlock.cs" />
     <Compile Include="TreeNodes\SpcFile.cs" />
+    <Compile Include="TreeNodes\SpcDirectory.cs" />
+    <Compile Include="TreeNodes\SpcDirectoryEntry.cs" />
+    <Compile Include="TreeNodes\SpcFooter.cs" />
     <Compile Include="TreeNodes\SpcHeader.cs" />
     <EmbeddedResource Include="BrowserForm.resx">
       <DependentUpon>BrowserForm.cs</DependentUpon>

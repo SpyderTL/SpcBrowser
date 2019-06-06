@@ -20,6 +20,8 @@ namespace SpcBrowser.TreeNodes
 			Nodes.Clear();
 
 			Nodes.Add(new SpcHeader { Text = "SPC Header", Source = this });
+			Nodes.Add(new SpcFooter { Text = "SPC Footer", Source = this });
+			Nodes.Add(new SpcDirectory { Text = "SPC Directory", Source = this });
 		}
 
 		public override object GetProperties()
