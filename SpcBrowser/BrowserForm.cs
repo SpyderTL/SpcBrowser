@@ -23,6 +23,7 @@ namespace SpcBrowser
 		private DataPointer[] Pointers;
 		private byte[] Data;
 		private int Index;
+		private SourceVoice Voice;
 
 		public BrowserForm()
 		{
@@ -63,11 +64,11 @@ namespace SpcBrowser
 
 			var format = new WaveFormat(32000, 16, 1);
 
-			var source = new SourceVoice(audio, format);
+			Voice = new SourceVoice(audio, format);
 
-			source.BufferEnd += Source_BufferEnd;
+			Voice.BufferEnd += Voice_BufferEnd;
 
-			source.Start();
+			Voice.Start();
 
 			Buffers = new AudioBuffer[2];
 			Pointers = new DataPointer[Buffers.Length];
@@ -78,18 +79,22 @@ namespace SpcBrowser
 				Pointers[buffer] = new DataPointer(Utilities.AllocateClearedMemory(1024), 1024);
 				Buffers[buffer] = new AudioBuffer(Pointers[buffer]);
 
-				source.SubmitSourceBuffer(Buffers[buffer], null);
+				Voice.SubmitSourceBuffer(Buffers[buffer], null);
 			}
 
 			Index = 0;
 		}
 
-		private void Source_BufferEnd(IntPtr obj)
+		private void Voice_BufferEnd(IntPtr obj)
 		{
+			var random = new Random();
+
 			for (var x = 0; x < Data.Length; x++)
-				Data[x] = 0;
+				Data[x] = (byte)random.Next(0, 25);
 
 			Pointers[Index].CopyFrom(Data);
+
+			Voice.SubmitSourceBuffer(Buffers[Index], null);
 
 			Index++;
 
