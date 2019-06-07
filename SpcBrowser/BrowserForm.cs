@@ -46,6 +46,12 @@ namespace SpcBrowser
 
 			treeView.Nodes.Add(new SpcFile
 			{
+				Text = "108 Emergency Call.spc",
+				Path = @"..\..\Examples\108 Emergency Call.spc"
+			});
+
+			treeView.Nodes.Add(new SpcFile
+			{
 				Text = "133 Last Boss Clear.spc",
 				Path = @"..\..\Examples\133 Last Boss Clear.spc"
 			});
@@ -67,6 +73,7 @@ namespace SpcBrowser
 
 			//Voice.BufferEnd += Voice_BufferEnd;
 
+			Voice.SetFrequencyRatio(0.33f);
 			Voice.Start();
 		}
 
@@ -92,6 +99,9 @@ namespace SpcBrowser
 		private void Play()
 		{
 			if (!(treeView.SelectedNode is SpcDirectoryEntry entry))
+				return;
+
+			if (entry.Start >= entry.Loop)
 				return;
 
 			var stream = entry.Source.GetStream();
