@@ -36,6 +36,7 @@
 			this.previewTab = new System.Windows.Forms.TabPage();
 			this.panel = new System.Windows.Forms.Panel();
 			this.playButton = new System.Windows.Forms.Button();
+			this.trackBar = new System.Windows.Forms.TrackBar();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -44,6 +45,7 @@
 			this.propertiesTab.SuspendLayout();
 			this.previewTab.SuspendLayout();
 			this.panel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -117,6 +119,7 @@
 			// 
 			// panel
 			// 
+			this.panel.Controls.Add(this.trackBar);
 			this.panel.Controls.Add(this.playButton);
 			this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel.Location = new System.Drawing.Point(3, 3);
@@ -133,6 +136,16 @@
 			this.playButton.Text = "Play";
 			this.playButton.UseVisualStyleBackColor = true;
 			this.playButton.Click += new System.EventHandler(this.playButton_Click);
+			// 
+			// trackBar
+			// 
+			this.trackBar.Location = new System.Drawing.Point(58, 193);
+			this.trackBar.Maximum = 100;
+			this.trackBar.Name = "trackBar";
+			this.trackBar.Size = new System.Drawing.Size(397, 45);
+			this.trackBar.TabIndex = 1;
+			this.trackBar.TickFrequency = 5;
+			this.trackBar.Value = 50;
 			// 
 			// BrowserForm
 			// 
@@ -151,6 +164,8 @@
 			this.propertiesTab.ResumeLayout(false);
 			this.previewTab.ResumeLayout(false);
 			this.panel.ResumeLayout(false);
+			this.panel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -165,6 +180,7 @@
 		private System.Windows.Forms.PropertyGrid propertyGrid;
 		private System.Windows.Forms.Panel panel;
 		private System.Windows.Forms.Button playButton;
+		private System.Windows.Forms.TrackBar trackBar;
 	}
 }
 

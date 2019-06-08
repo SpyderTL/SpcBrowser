@@ -32,35 +32,9 @@ namespace SpcBrowser
 		{
 			InitializeComponent();
 
-			treeView.Nodes.Add(new SpcFile
-			{
-				Text = "104 Title Demonstration.spc",
-				Path = @"..\..\Examples\104 Title Demonstration.spc"
-			});
+			var examples = new Folder { Text = "Examples", Path = @"..\..\Examples" };
 
-			treeView.Nodes.Add(new SpcFile
-			{
-				Text = "105 Title Screen.spc",
-				Path = @"..\..\Examples\105 Title Screen.spc"
-			});
-
-			treeView.Nodes.Add(new SpcFile
-			{
-				Text = "108 Emergency Call.spc",
-				Path = @"..\..\Examples\108 Emergency Call.spc"
-			});
-
-			treeView.Nodes.Add(new SpcFile
-			{
-				Text = "133 Last Boss Clear.spc",
-				Path = @"..\..\Examples\133 Last Boss Clear.spc"
-			});
-
-			treeView.Nodes.Add(new SpcFile
-			{
-				Text = "994 Briefing.spc",
-				Path = @"..\..\Examples\994 Briefing.spc"
-			});
+			treeView.Nodes.Add(examples);
 
 			Audio = new XAudio2();
 			Audio.StartEngine();
@@ -73,7 +47,6 @@ namespace SpcBrowser
 
 			//Voice.BufferEnd += Voice_BufferEnd;
 
-			Voice.SetFrequencyRatio(0.33f);
 			Voice.Start();
 		}
 
@@ -103,6 +76,8 @@ namespace SpcBrowser
 
 			if (entry.Start >= entry.Loop)
 				return;
+
+			Voice.SetFrequencyRatio(trackBar.Value * 0.04f);
 
 			var stream = entry.Source.GetStream();
 			var reader = new BinaryReader(stream);
