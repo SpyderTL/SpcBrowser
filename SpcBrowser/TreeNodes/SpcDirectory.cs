@@ -29,7 +29,7 @@ namespace SpcBrowser.TreeNodes
 					var start = reader.ReadUInt16();
 					var loop = reader.ReadUInt16();
 
-					Nodes.Add(new SpcDirectoryEntry { Text = entry.ToString("X2") + ": " + ((loop - start) <= 0 ? "Invalid" : (loop - start).ToString()), Start = start, Loop = loop, Source = Source });
+					Nodes.Add(new SpcDirectoryEntry { Text = entry.ToString("X2") + ((loop - start) < 0 ? " (Invalid)" : string.Empty), Start = start, Loop = loop, Source = Source });
 				}
 			}
 		}

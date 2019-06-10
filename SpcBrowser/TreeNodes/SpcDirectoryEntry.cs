@@ -34,7 +34,7 @@ namespace SpcBrowser.TreeNodes
 					var end = (header & 0x1) != 0;
 
 					var data = reader.ReadBytes(8);
-					var samples = data.SelectMany(x => new int[] { x >> 4, x & 0xf }).ToArray();
+					var samples = data.SelectMany(x => new int[] { SignedNibbleToInt(x >> 4), SignedNibbleToInt(x & 0xf) }).ToArray();
 
 					Nodes.Add(new SpcCompressedAudioBlock { Text = block.ToString(), Range = range, Filter = filter, Loop = loop, End = end, Samples = samples });
 
@@ -44,6 +44,14 @@ namespace SpcBrowser.TreeNodes
 						break;
 				}
 			}
+		}
+
+		private int SignedNibbleToInt(int value)
+		{
+			if (value < 8)
+				return value;
+
+			return value - 16;
 		}
 
 		public override object GetProperties()
